@@ -5,7 +5,7 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
-    return redirect('example')
+    return redirect('cover')
 
 @main.route('/profile')
 def profile():
