@@ -1,11 +1,12 @@
-from flask import Blueprint
+from flask import Blueprint, redirect
+import json
 
 main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
-    return 'Index'
+    return redirect('example')
 
 @main.route('/profile')
 def profile():
-    return 'Profile'
+    return json.dumps({'name' : 'Arnold', 'email' : 'arnold@example.com'})
