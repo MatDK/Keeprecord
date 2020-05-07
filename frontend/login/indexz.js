@@ -5,7 +5,7 @@ var username = document.getElementById("username").value;
 var password = document.getElementById("password").value;
 if ( username == "admin" && password == "admin"){
 alert ("Login successfully");
-window.location = "notes/table.html"; // Redirecting to other page.
+document.location.href = "../notes/table.php"; // Redirecting to other page.
 return false;
 }
 else{
