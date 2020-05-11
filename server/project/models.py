@@ -1,15 +1,14 @@
-from . import db
+from . import db, login
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
-
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
-    surveys = db.relationship('Survey', backref="creator", lazy=False)
 
     def __init__(self, email, password):
         self.email = email
@@ -19,7 +18,7 @@ class User(db.Model):
     def authenticate(cls, **kwargs):
         email = kwargs.get('email')
         password = kwargs.get('password')
-        
+
         if not email or not password:
             return None
 
@@ -32,17 +31,9 @@ class User(db.Model):
     def to_dict(self):
         return dict(id=self.id, email=self.email)
 
-class Survey(db.Model):
-    __tablename__ = 'surveys'
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Text)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    questions = db.relationship('Question', backref="survey", lazy=False)
-    creator_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
-    def to_dict(self):
-      return dict(id=self.id,
-                  name=self.name,
-                  created_at=self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
-                  questions=[question.to_dict() for question in self.questions])
+

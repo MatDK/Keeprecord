@@ -1,12 +1,17 @@
 from flask import Blueprint, redirect
-import json
+from flask import jsonify
+from flask_login import current_user
 
 main = Blueprint('main', __name__)
+
 
 @main.route('/')
 def index():
     return redirect('login.html')
 
+
 @main.route('/profile')
 def profile():
-    return json.dumps({'name' : 'Arnold', 'email' : 'arnold@example.com'})
+    return jsonify({'name' : 'Arnold', 'email' : 'arnold@example.com'})
+
+
