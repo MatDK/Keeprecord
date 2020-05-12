@@ -5,11 +5,7 @@ from .config import Config
 from flask_login import LoginManager
 
 #from flask_cors import CORS
-'''
 
-TODO: Check import. Find how db is defined in MegaTutorial
-
-'''
 #app = Flask(__name__, static_url_path='', static_folder='../../frontend/static/')
 app = Flask(__name__)
 #CORS(app)

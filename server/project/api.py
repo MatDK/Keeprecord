@@ -1,14 +1,12 @@
 from flask import jsonify, Blueprint, request
 from flask_login import current_user, login_user, logout_user
 from .models import User
-import pdb
+
 api = Blueprint('api', __name__)
 
 @api.route('/api/login', methods=('POST',))
 def login():
-    print(request.data)
     data = request.get_json()
-    print('data',data)
     if data:
         user = User.authenticate(**data)
         if user:

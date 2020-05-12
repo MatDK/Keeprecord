@@ -16,7 +16,9 @@ $(document).ready(function () {
             url: request_url,
             success: function (e) {
                 console.log(e);
-                window.location.replace("/api/private");
+                if (e.success) {
+                    window.location.replace("/home.html");
+                }
             },
             error: function (error) {
                 console.log(error);
