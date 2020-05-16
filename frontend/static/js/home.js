@@ -48,7 +48,7 @@ $(document).ready(function () {
 
     function get_notes()
     {
-        var get_notes_url = 'https://jrojer.pythonanywhere.com/get_notes';
+        var get_notes_url = 'https://jrojer.pythonanywhere.com/api/get_notes';
         //var get_notes_url = 'http://127.0.0.1:5000/api/get_notes';
         $.ajax(get_notes_url,
         {
@@ -92,7 +92,7 @@ $(document).ready(function () {
 
     $('#save_button').click(function () {
         //var request_url = 'http://127.0.0.1:5000/api/add_note';
-        var request_url = 'https://jrojer.pythonanywhere.com/api/login';
+        var request_url = 'https://jrojer.pythonanywhere.com/api/add_note';
 
         var data = {
             name:"",
