@@ -19,7 +19,8 @@ $(document).ready(function () {
         }
     });
 
-    $('#add-column').click(function () {
+    function append_column_name()
+    {
         var $input = $("#column-name");
         var column_name = $input.val();
         if(column_name.length > 0)
@@ -27,7 +28,16 @@ $(document).ready(function () {
             $("#column_list").append(`<li class="list-group-item">${column_name}</li>`);
             $input.val("");
         }
+    }
+
+    $("#column-name").keyup(function(e){ 
+        if(e.key ==="Enter")
+        {
+            append_column_name();
+        }
     });
+
+    $('#add-column').click(append_column_name);
 
     $('#create_new_note_button').click(function () {
         $("#column_list").empty();
