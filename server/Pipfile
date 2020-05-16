@@ -9,9 +9,9 @@ verify_ssl = true
 flask = "*"
 flask-sqlalchemy = "*"
 flask-login = "*"
-pyjwt = "*"
 flask-migrate = "*"
 flask-cors = "*"
+sqlite-web = "*"
 
 [requires]
 python_version = "3.6"
