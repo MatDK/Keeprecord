@@ -80,8 +80,12 @@ $(document).ready(function () {
                                                 </div>
                                                 </div>
                                             </div>`
-                    );
-                });
+                        );
+                    });
+                }
+                else
+                {
+                    window.location.replace("/login.html");
                 }
             },
             error: function (error) {
