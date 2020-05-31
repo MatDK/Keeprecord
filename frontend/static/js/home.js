@@ -1,3 +1,4 @@
+var localhost_urls = true;
 
 $(document).ready(function () {
 
@@ -48,8 +49,15 @@ $(document).ready(function () {
 
     function get_notes()
     {
-        var get_notes_url = 'https://jrojer.pythonanywhere.com/api/get_notes';
-        //var get_notes_url = 'http://127.0.0.1:5000/api/get_notes';
+        var get_notes_url = '';
+        if(localhost_urls)
+        {
+            get_notes_url = 'http://127.0.0.1:5000/api/get_notes';
+        }
+        else
+        {
+            get_notes_url = 'https://jrojer.pythonanywhere.com/api/get_notes';
+        }
         $.ajax(get_notes_url,
         {
             success: function (data, status, xhr) {
@@ -85,6 +93,7 @@ $(document).ready(function () {
                 }
                 else
                 {
+                    // TODO: make login check before everything else
                     window.location.replace("/login.html");
                 }
             },
@@ -95,8 +104,16 @@ $(document).ready(function () {
     }
 
     $('#save_button').click(function () {
-        //var request_url = 'http://127.0.0.1:5000/api/add_note';
-        var request_url = 'https://jrojer.pythonanywhere.com/api/add_note';
+
+        var request_url = '';
+        if(localhost_urls)
+        {
+            request_url = 'http://127.0.0.1:5000/api/add_note';
+        }
+        else
+        {
+            request_url = 'https://jrojer.pythonanywhere.com/api/add_note';
+        }
 
         var data = {
             name:"",

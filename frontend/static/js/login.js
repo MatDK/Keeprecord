@@ -1,7 +1,18 @@
+var localhost_urls = true;
+var url_base = '';
+if(localhost_urls)
+{
+    url_base = 'http://127.0.0.1:5000';
+}
+else
+{
+    url_base = 'https://jrojer.pythonanywhere.com';
+}
+
 $(document).ready(function () {
     $('#signin-button').click(function () {
-        //var request_url = 'http://127.0.0.1:5000/api/login';
-        var request_url = 'https://jrojer.pythonanywhere.com/api/login';
+
+        var request_url = url_base + '/api/login';
 
         var data = {
             email: $('#inputEmail').val(),
