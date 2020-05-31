@@ -5,8 +5,8 @@ from .config import Config
 from flask_login import LoginManager
 
 
-#app = Flask(__name__, static_url_path='', static_folder='../../frontend/static/')
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='../../frontend/static/')
+#app = Flask(__name__)
 app.config.from_object(Config)
 
 db = SQLAlchemy(app)
